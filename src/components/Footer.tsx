@@ -1,86 +1,183 @@
 import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin, Instagram, Linkedin } from "lucide-react";
-import allamynLogo from "@/assets/allamyn-logo.png";
+import { motion } from "framer-motion";
 
 const Footer = () => {
   return (
-    <footer className="bg-primary text-primary-foreground">
+    <motion.footer
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+      viewport={{ once: true }}
+      className="bg-primary text-primary-foreground"
+    >
       <div className="container mx-auto px-4 py-16">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Logo and Tagline */}
-          <div className="col-span-1 md:col-span-2">
-            <Link to="/" className="flex items-center space-x-3 mb-4">
-              <img 
-                src={allamynLogo} 
-                alt="Allamyn" 
-                className="h-10 w-auto filter brightness-0 invert"
-              />
-            </Link>
-            <p className="text-primary-foreground/80 text-sm leading-relaxed max-w-md">
-              We build brands that endure. At Allamyn, we help businesses show up with purpose, 
-              polish, and presence—across every touchpoint.
-            </p>
-            <div className="flex items-center space-x-4 mt-6">
-              <a 
-                href="#" 
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="col-span-1 md:col-span-2"
+          >
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.2 }}
+            >
+              <Link to="/" className="flex items-center space-x-3 mb-4">
+                <img
+                  src="/ALLAMYNE XX.png"
+                  alt="Allamyn"
+                  className="h-10 w-auto"
+                />
+              </Link>
+            </motion.div>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              viewport={{ once: true }}
+              className="text-primary-foreground/80 text-sm leading-relaxed max-w-md"
+            >
+              We build brands that endure. At Allamyn, we help businesses show
+              up with purpose, polish, and presence—across every touchpoint.
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="flex items-center space-x-4 mt-6"
+            >
+              <motion.a
+                whileHover={{ scale: 1.2, y: -2 }}
+                whileTap={{ scale: 0.9 }}
+                href="#"
                 className="text-primary-foreground/60 hover:text-secondary transition-colors"
                 aria-label="Instagram"
               >
                 <Instagram size={20} />
-              </a>
-              <a 
-                href="#" 
+              </motion.a>
+              <motion.a
+                whileHover={{ scale: 1.2, y: -2 }}
+                whileTap={{ scale: 0.9 }}
+                href="#"
                 className="text-primary-foreground/60 hover:text-secondary transition-colors"
                 aria-label="LinkedIn"
               >
                 <Linkedin size={20} />
-              </a>
-            </div>
-          </div>
+              </motion.a>
+            </motion.div>
+          </motion.div>
 
           {/* Quick Links */}
-          <div>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            viewport={{ once: true }}
+          >
             <h4 className="font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2 text-sm">
-              <li><Link to="/services" className="text-primary-foreground/80 hover:text-secondary transition-colors">Services</Link></li>
-              <li><Link to="/portfolio" className="text-primary-foreground/80 hover:text-secondary transition-colors">Portfolio</Link></li>
-              <li><Link to="/about" className="text-primary-foreground/80 hover:text-secondary transition-colors">About</Link></li>
-              <li><Link to="/team" className="text-primary-foreground/80 hover:text-secondary transition-colors">Team</Link></li>
-              <li><Link to="/contact" className="text-primary-foreground/80 hover:text-secondary transition-colors">Contact</Link></li>
+              {[
+                { to: "/services", label: "Services" },
+                { to: "/portfolio", label: "Portfolio" },
+                { to: "/about", label: "About" },
+                { to: "/team", label: "Team" },
+                { to: "/contact", label: "Contact" },
+              ].map((link, index) => (
+                <motion.li
+                  key={link.to}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.4, delay: 0.1 + index * 0.05 }}
+                  viewport={{ once: true }}
+                >
+                  <Link
+                    to={link.to}
+                    className="text-primary-foreground/80 hover:text-secondary transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                </motion.li>
+              ))}
             </ul>
-          </div>
+          </motion.div>
 
           {/* Contact Info */}
-          <div>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
             <h4 className="font-semibold mb-4">Get in Touch</h4>
             <ul className="space-y-3 text-sm">
-              <li className="flex items-center space-x-2 text-primary-foreground/80">
-                <Mail size={16} />
-                <a href="mailto:hello@allamyn.com" className="hover:text-secondary transition-colors">
-                  hello@allamyn.com
-                </a>
-              </li>
-              <li className="flex items-center space-x-2 text-primary-foreground/80">
-                <Phone size={16} />
-                <a href="tel:+1234567890" className="hover:text-secondary transition-colors">
-                  +1 (234) 567-890
-                </a>
-              </li>
-              <li className="flex items-start space-x-2 text-primary-foreground/80">
-                <MapPin size={16} className="mt-0.5" />
-                <span>123 Design Street<br />Creative City, CC 12345</span>
-              </li>
+              {[
+                {
+                  icon: Mail,
+                  content: (
+                    <a
+                      href="mailto:hello@allamyn.com"
+                      className="hover:text-secondary transition-colors"
+                    >
+                      hello@allamyn.com
+                    </a>
+                  ),
+                },
+                {
+                  icon: Phone,
+                  content: (
+                    <a
+                      href="tel:+1234567890"
+                      className="hover:text-secondary transition-colors"
+                    >
+                      +1 (234) 567-890
+                    </a>
+                  ),
+                },
+                {
+                  icon: MapPin,
+                  content: (
+                    <span>
+                      123 Design Street
+                      <br />
+                      Creative City, CC 12345
+                    </span>
+                  ),
+                },
+              ].map((item, index) => (
+                <motion.li
+                  key={index}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.4, delay: 0.2 + index * 0.05 }}
+                  viewport={{ once: true }}
+                  className="flex items-center space-x-2 text-primary-foreground/80"
+                >
+                  <item.icon size={16} className="mt-0.5" />
+                  {item.content}
+                </motion.li>
+              ))}
             </ul>
-          </div>
+          </motion.div>
         </div>
 
-        <div className="border-t border-primary-foreground/20 mt-12 pt-8 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          viewport={{ once: true }}
+          className="border-t border-primary-foreground/20 mt-12 pt-8 text-center"
+        >
           <p className="text-sm text-primary-foreground/60">
-            © 2024 Allamyn. All rights reserved. Timeless branding for lasting impact.
+            © 2024 Allamyn. All rights reserved. Timeless branding for lasting
+            impact.
           </p>
-        </div>
+        </motion.div>
       </div>
-    </footer>
+    </motion.footer>
   );
 };
 

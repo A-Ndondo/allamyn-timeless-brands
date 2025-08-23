@@ -4,8 +4,21 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Mail, Phone, MapPin, Calendar, Instagram, Linkedin } from "lucide-react";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Calendar,
+  Instagram,
+  Linkedin,
+} from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
@@ -16,32 +29,33 @@ const Contact = () => {
     email: "",
     company: "",
     projectType: "",
-    message: ""
+    message: "",
   });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     toast({
       title: "Message Sent!",
-      description: "Thank you for reaching out. We'll get back to you within 24 hours.",
+      description:
+        "Thank you for reaching out. We'll get back to you within 24 hours.",
     });
     setFormData({
       name: "",
       email: "",
       company: "",
       projectType: "",
-      message: ""
+      message: "",
     });
   };
 
   const handleInputChange = (field: string, value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
+    setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      
+
       {/* Hero Section */}
       <section className="bg-gradient-subtle py-20">
         <div className="container mx-auto px-4 text-center">
@@ -49,8 +63,8 @@ const Contact = () => {
             Let's Build Something That Lasts
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto animate-slide-up">
-            Whether you're starting fresh or refining your legacy, we're here to help you 
-            show up clearly and confidently.
+            Whether you're starting fresh or refining your legacy, we're here to
+            help you show up clearly and confidently.
           </p>
         </div>
       </section>
@@ -59,14 +73,16 @@ const Contact = () => {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            
             {/* Contact Form */}
             <div className="lg:col-span-2">
               <Card className="shadow-elegant">
                 <CardHeader>
-                  <CardTitle className="text-2xl text-primary">Start Your Brand Journey</CardTitle>
+                  <CardTitle className="text-2xl text-primary">
+                    Start Your Brand Journey
+                  </CardTitle>
                   <p className="text-muted-foreground">
-                    Tell us about your project and we'll get back to you with insights and next steps.
+                    Tell us about your project and we'll get back to you with
+                    insights and next steps.
                   </p>
                 </CardHeader>
                 <CardContent>
@@ -77,7 +93,9 @@ const Contact = () => {
                         <Input
                           id="name"
                           value={formData.name}
-                          onChange={(e) => handleInputChange("name", e.target.value)}
+                          onChange={(e) =>
+                            handleInputChange("name", e.target.value)
+                          }
                           required
                           className="mt-1"
                         />
@@ -88,55 +106,79 @@ const Contact = () => {
                           id="email"
                           type="email"
                           value={formData.email}
-                          onChange={(e) => handleInputChange("email", e.target.value)}
+                          onChange={(e) =>
+                            handleInputChange("email", e.target.value)
+                          }
                           required
                           className="mt-1"
                         />
                       </div>
                     </div>
-                    
+
                     <div>
                       <Label htmlFor="company">Company (Optional)</Label>
                       <Input
                         id="company"
                         value={formData.company}
-                        onChange={(e) => handleInputChange("company", e.target.value)}
+                        onChange={(e) =>
+                          handleInputChange("company", e.target.value)
+                        }
                         className="mt-1"
                       />
                     </div>
-                    
+
                     <div>
                       <Label htmlFor="projectType">Project Type</Label>
-                      <Select onValueChange={(value) => handleInputChange("projectType", value)}>
+                      <Select
+                        onValueChange={(value) =>
+                          handleInputChange("projectType", value)
+                        }
+                      >
                         <SelectTrigger className="mt-1">
                           <SelectValue placeholder="Select your project type" />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="brand-strategy">Brand Strategy</SelectItem>
-                          <SelectItem value="visual-identity">Visual Identity</SelectItem>
-                          <SelectItem value="web-design">Web Design & UX</SelectItem>
-                          <SelectItem value="print-design">Print Design</SelectItem>
-                          <SelectItem value="brand-apparel">Brand Apparel</SelectItem>
-                          <SelectItem value="full-rebrand">Complete Rebrand</SelectItem>
-                          <SelectItem value="consultation">Brand Consultation</SelectItem>
+                          <SelectItem value="brand-strategy">
+                            Brand Strategy
+                          </SelectItem>
+                          <SelectItem value="visual-identity">
+                            Visual Identity
+                          </SelectItem>
+                          <SelectItem value="web-design">
+                            Web Design & UX
+                          </SelectItem>
+                          <SelectItem value="print-design">
+                            Print Design
+                          </SelectItem>
+                          <SelectItem value="brand-apparel">
+                            Brand Apparel
+                          </SelectItem>
+                          <SelectItem value="full-rebrand">
+                            Complete Rebrand
+                          </SelectItem>
+                          <SelectItem value="consultation">
+                            Brand Consultation
+                          </SelectItem>
                           <SelectItem value="other">Other</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
-                    
+
                     <div>
                       <Label htmlFor="message">Message *</Label>
                       <Textarea
                         id="message"
                         value={formData.message}
-                        onChange={(e) => handleInputChange("message", e.target.value)}
+                        onChange={(e) =>
+                          handleInputChange("message", e.target.value)
+                        }
                         required
                         rows={6}
                         className="mt-1"
                         placeholder="Tell us about your project, goals, and any specific requirements..."
                       />
                     </div>
-                    
+
                     <Button type="submit" size="lg" className="w-full">
                       Send Message
                     </Button>
@@ -147,39 +189,47 @@ const Contact = () => {
 
             {/* Contact Information */}
             <div className="space-y-8">
-              
               {/* Quick Contact */}
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-xl text-primary">Get in Touch</CardTitle>
+                  <CardTitle className="text-xl text-primary">
+                    Get in Touch
+                  </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="flex items-center space-x-3">
                     <Mail className="w-5 h-5 text-secondary" />
                     <div>
                       <p className="font-medium text-primary">Email</p>
-                      <a href="mailto:hello@allamyn.com" className="text-muted-foreground hover:text-secondary transition-colors">
+                      <a
+                        href="mailto:hello@allamyn.com"
+                        className="text-muted-foreground hover:text-secondary transition-colors"
+                      >
                         hello@allamyn.com
                       </a>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-center space-x-3">
                     <Phone className="w-5 h-5 text-secondary" />
                     <div>
                       <p className="font-medium text-primary">Phone</p>
-                      <a href="tel:+1234567890" className="text-muted-foreground hover:text-secondary transition-colors">
+                      <a
+                        href="tel:+1234567890"
+                        className="text-muted-foreground hover:text-secondary transition-colors"
+                      >
                         +1 (234) 567-890
                       </a>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-start space-x-3">
                     <MapPin className="w-5 h-5 text-secondary mt-1" />
                     <div>
                       <p className="font-medium text-primary">Address</p>
                       <p className="text-muted-foreground">
-                        123 Design Street<br />
+                        123 Design Street
+                        <br />
                         Creative City, CC 12345
                       </p>
                     </div>
@@ -197,8 +247,8 @@ const Contact = () => {
                 </CardHeader>
                 <CardContent>
                   <p className="mb-4 text-primary-foreground/90">
-                    Ready to dive deeper? Schedule a 30-minute discovery call to discuss your 
-                    brand goals and explore how we can help.
+                    Ready to dive deeper? Schedule a 30-minute discovery call to
+                    discuss your brand goals and explore how we can help.
                   </p>
                   <Button variant="secondary" className="w-full">
                     Schedule Call
@@ -209,19 +259,21 @@ const Contact = () => {
               {/* Social Links */}
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-xl text-primary">Follow Us</CardTitle>
+                  <CardTitle className="text-xl text-primary">
+                    Follow Us
+                  </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="flex space-x-4">
-                    <a 
-                      href="#" 
+                    <a
+                      href="#"
                       className="text-muted-foreground hover:text-secondary transition-colors"
                       aria-label="Instagram"
                     >
                       <Instagram size={24} />
                     </a>
-                    <a 
-                      href="#" 
+                    <a
+                      href="#"
                       className="text-muted-foreground hover:text-secondary transition-colors"
                       aria-label="LinkedIn"
                     >
@@ -236,10 +288,12 @@ const Contact = () => {
 
               {/* Response Time */}
               <div className="bg-brand-neutral rounded-lg p-6">
-                <h3 className="font-semibold text-primary mb-2">Our Commitment</h3>
+                <h3 className="font-semibold text-primary mb-2">
+                  Our Commitment
+                </h3>
                 <p className="text-sm text-muted-foreground">
-                  We respond to all inquiries within 24 hours and typically schedule 
-                  discovery calls within 48 hours of initial contact.
+                  We respond to all inquiries within 24 hours and typically
+                  schedule discovery calls within 48 hours of initial contact.
                 </p>
               </div>
             </div>
