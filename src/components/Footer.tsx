@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Mail, Phone, MapPin, Instagram, Linkedin } from "lucide-react";
+import { Mail, Phone, MapPin, Facebook, Linkedin } from "lucide-react";
 import { motion } from "framer-motion";
 
 const Footer = () => {
@@ -53,16 +53,20 @@ const Footer = () => {
               <motion.a
                 whileHover={{ scale: 1.2, y: -2 }}
                 whileTap={{ scale: 0.9 }}
-                href="#"
+                href="https://www.facebook.com/allaminegraphicszw"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-primary-foreground/60 hover:text-secondary transition-colors"
-                aria-label="Instagram"
+                aria-label="Facebook"
               >
-                <Instagram size={20} />
+                <Facebook size={20} />
               </motion.a>
               <motion.a
                 whileHover={{ scale: 1.2, y: -2 }}
                 whileTap={{ scale: 0.9 }}
-                href="#"
+                href="https://www.linkedin.com/company/allamyn/?viewAsMember=true"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-primary-foreground/60 hover:text-secondary transition-colors"
                 aria-label="LinkedIn"
               >
@@ -130,10 +134,10 @@ const Footer = () => {
                   icon: Phone,
                   content: (
                     <a
-                      href="tel:+1234567890"
+                      href="tel:+263774519323"
                       className="hover:text-secondary transition-colors"
                     >
-                      +1 (234) 567-890
+                      +263 774 519 323
                     </a>
                   ),
                 },
@@ -141,9 +145,9 @@ const Footer = () => {
                   icon: MapPin,
                   content: (
                     <span>
-                      123 Design Street
+                      4 Acacia Avenue
                       <br />
-                      Creative City, CC 12345
+                      Windsor, Gweru
                     </span>
                   ),
                 },
@@ -172,7 +176,7 @@ const Footer = () => {
           className="border-t border-primary-foreground/20 mt-12 pt-8 text-center"
         >
           <p className="text-sm text-primary-foreground/60">
-            © 2024 Allamyn. All rights reserved. Timeless branding for lasting
+            © 2025 Allamyn. All rights reserved. Timeless branding for lasting
             impact.
           </p>
         </motion.div>

@@ -123,13 +123,13 @@ export const EnhancedContactForm: React.FC = () => {
     {
       icon: Phone,
       title: "Phone",
-      content: "+1 (234) 567-890",
-      link: "tel:+1234567890",
+      content: "+263 774 519 323",
+      link: "tel:+263774519323",
     },
     {
       icon: MapPin,
       title: "Location",
-      content: "123 Design Street, Creative City, CC 12345",
+      content: "4 Acacia Avenue, Windsor, Gweru",
       link: "#",
     },
   ];

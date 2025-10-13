@@ -49,22 +49,22 @@ const Index = () => {
     {
       quote:
         "Allamyn transformed our brand from generic to genuinely distinctive. The strategy and design work exceeded all expectations.",
-      author: "Sarah Johnson",
-      company: "TechFlow Solutions",
+      author: "Alphanette Gemu",
+      company: "Gweru City Parking",
       rating: 5,
     },
     {
       quote:
         "Working with Allan and his team was seamless. They understood our vision and brought it to life with incredible attention to detail.",
-      author: "Marcus Chen",
-      company: "Artisan Coffee Co.",
+      author: "Learnmore Nyoni",
+      company: "Impact Stories",
       rating: 5,
     },
     {
       quote:
         "The rebrand positioned us perfectly in the market. Our customers immediately noticed the difference and it's driving real results.",
-      author: "Emily Rodriguez",
-      company: "Wellness Hub",
+      author: "Tendai Maguwu",
+      company: "Hwamanda Communications",
       rating: 5,
     },
   ];
@@ -82,7 +82,14 @@ const Index = () => {
 
       {/* Hero Section */}
       <section className="relative py-20 lg:py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-subtle"></div>
+        {/* Background Banner Image */}
+        <div className="absolute inset-0 z-0">
+          <div
+            className="w-full h-full bg-cover bg-center md:bg-center bg-[center_top] bg-no-repeat"
+            style={{ backgroundImage: 'url("/BACKDROP BANNER FOR WEB.jpg")' }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-primary/60 via-primary/50 to-background/90"></div>
+        </div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             {/* Logo */}
@@ -102,7 +109,7 @@ const Index = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-              className="text-4xl md:text-6xl lg:text-7xl font-bold text-primary mb-6"
+              className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6"
             >
               We Build Brands That{" "}
               <span className="text-secondary">Endure</span>
@@ -111,7 +118,7 @@ const Index = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-              className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto"
+              className="text-xl md:text-2xl text-white mb-8 max-w-3xl mx-auto"
             >
               At Allamyn, we help businesses show up with purpose, polish, and
               presence—across every touchpoint.

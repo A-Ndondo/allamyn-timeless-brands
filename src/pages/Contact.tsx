@@ -16,7 +16,7 @@ import {
   Phone,
   MapPin,
   Calendar,
-  Instagram,
+  Facebook,
   Linkedin,
 } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
@@ -31,21 +31,53 @@ const Contact = () => {
     projectType: "",
     message: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: "Message Sent!",
-      description:
-        "Thank you for reaching out. We'll get back to you within 24 hours.",
-    });
-    setFormData({
-      name: "",
-      email: "",
-      company: "",
-      projectType: "",
-      message: "",
-    });
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch("https://formspree.io/f/xovkpdrg", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          company: formData.company,
+          projectType: formData.projectType,
+          message: formData.message,
+        }),
+      });
+
+      if (response.ok) {
+        toast({
+          title: "Message Sent!",
+          description:
+            "Thank you for reaching out. We'll get back to you within 24 hours.",
+        });
+        setFormData({
+          name: "",
+          email: "",
+          company: "",
+          projectType: "",
+          message: "",
+        });
+      } else {
+        throw new Error("Failed to send message");
+      }
+    } catch (error) {
+      toast({
+        title: "Error",
+        description:
+          "Failed to send message. Please try again or contact us directly.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleInputChange = (field: string, value: string) => {
@@ -179,8 +211,13 @@ const Contact = () => {
                       />
                     </div>
 
-                    <Button type="submit" size="lg" className="w-full">
-                      Send Message
+                    <Button
+                      type="submit"
+                      size="lg"
+                      className="w-full"
+                      disabled={isSubmitting}
+                    >
+                      {isSubmitting ? "Sending..." : "Send Message"}
                     </Button>
                   </form>
                 </CardContent>
@@ -215,10 +252,10 @@ const Contact = () => {
                     <div>
                       <p className="font-medium text-primary">Phone</p>
                       <a
-                        href="tel:+1234567890"
+                        href="tel:+263774519323"
                         className="text-muted-foreground hover:text-secondary transition-colors"
                       >
-                        +1 (234) 567-890
+                        +263 774 519 323
                       </a>
                     </div>
                   </div>
@@ -228,9 +265,9 @@ const Contact = () => {
                     <div>
                       <p className="font-medium text-primary">Address</p>
                       <p className="text-muted-foreground">
-                        123 Design Street
+                        4 Acacia Avenue
                         <br />
-                        Creative City, CC 12345
+                        Windsor, Gweru
                       </p>
                     </div>
                   </div>
@@ -266,14 +303,18 @@ const Contact = () => {
                 <CardContent>
                   <div className="flex space-x-4">
                     <a
-                      href="#"
+                      href="https://www.facebook.com/allaminegraphicszw"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="text-muted-foreground hover:text-secondary transition-colors"
-                      aria-label="Instagram"
+                      aria-label="Facebook"
                     >
-                      <Instagram size={24} />
+                      <Facebook size={24} />
                     </a>
                     <a
-                      href="#"
+                      href="https://www.linkedin.com/company/allamyn/?viewAsMember=true"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="text-muted-foreground hover:text-secondary transition-colors"
                       aria-label="LinkedIn"
                     >

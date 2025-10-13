@@ -1,6 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Linkedin, Mail } from "lucide-react";
+import { Linkedin, Mail, Facebook } from "lucide-react";
 import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
@@ -8,65 +8,56 @@ import Footer from "@/components/Footer";
 const Team = () => {
   const teamMembers = [
     {
+      name: "Adelle Madongonda",
+      role: "Executive Director",
+      quote: "Leadership is about inspiring others to achieve their best.",
+      bio: "Adelle oversees strategic direction and ensures all projects align with our mission of timeless branding.",
+      linkedin: "https://www.linkedin.com/in/adelle-t-madongonda-65665a1a4/",
+      email: "adelle@allamyn.com",
+      image: "/1620930728880.jpeg",
+    },
+    {
       name: "Allan Ndondo",
-      role: "Founder & Creative Director",
+      role: "Senior Brand Designer",
       quote: "Design should feel timeless and honest.",
       bio: "With over 10 years in brand design, Allan leads our creative vision and strategic direction.",
-      linkedin: "#",
+      linkedin: "https://www.linkedin.com/in/allan-ndondo-3199b41bb/",
       email: "allan@allamyn.com",
-      initials: "AN"
+      image: "/1746781043750.jpeg",
     },
     {
-      name: "Sarah Chen",
-      role: "Brand Strategist",
-      quote: "Great brands start with great stories.",
-      bio: "Sarah helps clients discover their unique brand narrative and positioning strategy.",
-      linkedin: "#",
-      email: "sarah@allamyn.com",
-      initials: "SC"
+      name: "Tinashe Mundondo",
+      role: "Senior Software Engineer",
+      quote: "Code is poetry in motion.",
+      bio: "Tinashe brings technical expertise to our digital solutions, ensuring seamless user experiences.",
+      linkedin: "https://www.linkedin.com/in/tinashe-mundondo-103953176/",
+      email: "tinashe@allamyn.com",
+      image: "/1700468849260.jpeg",
     },
     {
-      name: "Marcus Rodriguez",
-      role: "Visual Designer",
-      quote: "Every pixel has a purpose.",
-      bio: "Marcus brings visual concepts to life with meticulous attention to detail and craft.",
-      linkedin: "#",
-      email: "marcus@allamyn.com",
-      initials: "MR"
+      name: "Shumirai P. Mukuze",
+      role: "Graphic Designer",
+      quote: "Every visual tells a story worth sharing.",
+      bio: "Shumirai creates compelling visual narratives that bring brands to life across all mediums.",
+      linkedin: "https://www.linkedin.com/in/peacemaker-mukuze-634413263/",
+      email: "shumirai@allamyn.com",
+      image: "/1759908464754.jpeg",
     },
     {
-      name: "Priya Patel",
-      role: "UX/UI Designer",
-      quote: "Design is not just what it looks like—it's how it works.",
-      bio: "Priya creates intuitive digital experiences that align perfectly with brand identity.",
-      linkedin: "#",
-      email: "priya@allamyn.com",
-      initials: "PP"
+      name: "Andrew Munyebvu",
+      role: "Tax Accountant",
+      quote: "Numbers tell the real story of success.",
+      bio: "Andrew ensures financial clarity and compliance, supporting our business growth and stability.",
+      linkedin: "https://www.linkedin.com/in/andrew-munyebvu-a7846712b/",
+      email: "andrew@allamyn.com",
+      image: "/1752394907678.jpeg",
     },
-    {
-      name: "James Wilson",
-      role: "Print Production Specialist",
-      quote: "Quality is in the details.",
-      bio: "James ensures every printed piece meets our exacting standards for excellence.",
-      linkedin: "#",
-      email: "james@allamyn.com",
-      initials: "JW"
-    },
-    {
-      name: "Emily Foster",
-      role: "Account Manager",
-      quote: "Client success is our success.",
-      bio: "Emily guides clients through every step of their brand journey with care and expertise.",
-      linkedin: "#",
-      email: "emily@allamyn.com",
-      initials: "EF"
-    }
   ];
 
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      
+
       {/* Hero Section */}
       <section className="bg-gradient-subtle py-20">
         <div className="container mx-auto px-4 text-center">
@@ -74,8 +65,9 @@ const Team = () => {
             The Team Behind the Timeless
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto animate-slide-up">
-            At Allamyn, we believe timeless work comes from collaborative energy. 
-            Our team blends design, strategy, and storytelling expertise to deliver branding that lasts.
+            At Allamyn, we believe timeless work comes from collaborative
+            energy. Our team blends design, strategy, and storytelling expertise
+            to deliver branding that lasts.
           </p>
         </div>
       </section>
@@ -85,15 +77,22 @@ const Team = () => {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {teamMembers.map((member, index) => (
-              <Card key={index} className="group hover:shadow-elegant transition-all duration-300 animate-fade-in">
+              <Card
+                key={index}
+                className="group hover:shadow-elegant transition-all duration-300 animate-fade-in"
+              >
                 <CardContent className="p-8 text-center">
                   {/* Avatar */}
                   <div className="relative mb-6">
-                    <div className="w-24 h-24 bg-gradient-brand rounded-full flex items-center justify-center text-2xl font-bold text-primary-foreground mx-auto group-hover:scale-105 transition-transform duration-300">
-                      {member.initials}
+                    <div className="w-24 h-24 rounded-full overflow-hidden mx-auto group-hover:scale-105 transition-transform duration-300">
+                      <img
+                        src={member.image}
+                        alt={member.name}
+                        className="w-full h-full object-cover"
+                      />
                     </div>
                   </div>
-                  
+
                   {/* Name and Role */}
                   <h3 className="text-xl font-semibold text-primary mb-2">
                     {member.name}
@@ -101,27 +100,38 @@ const Team = () => {
                   <p className="text-secondary font-medium mb-4">
                     {member.role}
                   </p>
-                  
+
                   {/* Quote */}
                   <blockquote className="text-muted-foreground italic mb-4 min-h-[48px] flex items-center justify-center">
                     "{member.quote}"
                   </blockquote>
-                  
+
                   {/* Bio */}
                   <p className="text-sm text-muted-foreground mb-6 leading-relaxed">
                     {member.bio}
                   </p>
-                  
+
                   {/* Contact Links */}
                   <div className="flex items-center justify-center space-x-4">
-                    <a 
+                    <a
                       href={member.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="text-muted-foreground hover:text-secondary transition-colors"
                       aria-label={`${member.name} LinkedIn`}
                     >
                       <Linkedin size={20} />
                     </a>
-                    <a 
+                    <a
+                      href="https://www.facebook.com/allaminegraphicszw"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-muted-foreground hover:text-secondary transition-colors"
+                      aria-label="Allamyn Facebook Page"
+                    >
+                      <Facebook size={20} />
+                    </a>
+                    <a
                       href={`mailto:${member.email}`}
                       className="text-muted-foreground hover:text-secondary transition-colors"
                       aria-label={`Email ${member.name}`}
@@ -144,21 +154,29 @@ const Team = () => {
               Our Collaborative Culture
             </h2>
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-              We're more than a team—we're a collective of creative minds united by our passion 
-              for timeless design. Every project benefits from our diverse perspectives and 
-              collaborative approach.
+              We're more than a team—we're a collective of creative minds united
+              by our passion for timeless design. Every project benefits from
+              our diverse perspectives and collaborative approach.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
               <div className="text-center">
-                <div className="text-3xl font-bold text-secondary mb-2">10+</div>
-                <p className="text-muted-foreground">Years Combined Experience</p>
+                <div className="text-3xl font-bold text-secondary mb-2">
+                  10+
+                </div>
+                <p className="text-muted-foreground">
+                  Years Combined Experience
+                </p>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-secondary mb-2">200+</div>
+                <div className="text-3xl font-bold text-secondary mb-2">
+                  200+
+                </div>
                 <p className="text-muted-foreground">Brands Transformed</p>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-secondary mb-2">100%</div>
+                <div className="text-3xl font-bold text-secondary mb-2">
+                  100%
+                </div>
                 <p className="text-muted-foreground">Client Satisfaction</p>
               </div>
             </div>
@@ -173,8 +191,8 @@ const Team = () => {
             Want to Join Our Team?
           </h2>
           <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-            We're always looking for talented individuals who share our passion for 
-            timeless design and strategic thinking.
+            We're always looking for talented individuals who share our passion
+            for timeless design and strategic thinking.
           </p>
           <Button variant="outline" size="lg" asChild>
             <Link to="/contact">Get in Touch</Link>
@@ -189,8 +207,8 @@ const Team = () => {
             Ready to Work with Our Team?
           </h2>
           <p className="text-xl text-primary-foreground/80 mb-8 max-w-2xl mx-auto">
-            Let's collaborate to bring your brand vision to life with the expertise and 
-            passion that defines the Allamyn approach.
+            Let's collaborate to bring your brand vision to life with the
+            expertise and passion that defines the Allamyn approach.
           </p>
           <Button variant="secondary" size="lg" asChild>
             <Link to="/contact">Start Your Project</Link>
