@@ -8,196 +8,173 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import { Skeleton } from "@/components/ui/skeleton";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 
 type PortfolioItem = {
   id: string;
   title: string;
-  category: "Digital Media Marketing" | "Logos";
-  subcategory: string;
+  category:
+    | "Gweru City Parking"
+    | "Hawker Siddeley"
+    | "MSU"
+    | "City Space"
+    | "Tunvic";
   src: string;
 };
 
 const buildItem = (
   title: string,
   category: PortfolioItem["category"],
-  subcategory: string,
   path: string
 ): PortfolioItem => ({
-  id: `${category}-${subcategory}-${title}`.replace(/\s+/g, "-"),
+  id: `${category}-${title}`.replace(/\s+/g, "-"),
   title,
   category,
-  subcategory,
   src: encodeURI(path),
 });
 
 const Portfolio = () => {
   const items: PortfolioItem[] = useMemo(
     () => [
-      // Digital Media Marketing → GWERU CITY PARKING
+      // Gweru City Parking
       buildItem(
         "Gweru City Parking 1",
-        "Digital Media Marketing",
-        "GWERU CITY PARKING",
+        "Gweru City Parking",
         "/PORTFOLIO/DIGITAL MEDIA MARKETING/GWERU CITY PARKING/1.jpg"
       ),
       buildItem(
         "Gweru City Parking 2",
-        "Digital Media Marketing",
-        "GWERU CITY PARKING",
+        "Gweru City Parking",
         "/PORTFOLIO/DIGITAL MEDIA MARKETING/GWERU CITY PARKING/2.jpg"
       ),
       buildItem(
         "Gweru City Parking 3",
-        "Digital Media Marketing",
-        "GWERU CITY PARKING",
+        "Gweru City Parking",
         "/PORTFOLIO/DIGITAL MEDIA MARKETING/GWERU CITY PARKING/3.jpg"
       ),
 
-      // Digital Media Marketing → HAWKER SIDDELEY
+      // Hawker Siddeley
       buildItem(
         "Hawker Siddeley MacBook Air",
-        "Digital Media Marketing",
-        "HAWKER SIDDELEY",
+        "Hawker Siddeley",
         "/PORTFOLIO/DIGITAL MEDIA MARKETING/HAWKER SIDDELEY/Industrial MacBook Air Mockup.jpg"
       ),
       buildItem(
         "Hawker Siddeley MacBook Pro",
-        "Digital Media Marketing",
-        "HAWKER SIDDELEY",
+        "Hawker Siddeley",
         "/PORTFOLIO/DIGITAL MEDIA MARKETING/HAWKER SIDDELEY/Macbook Pro Mockup.jpg"
       ),
 
-      // Digital Media Marketing → MSU
+      // MSU
       buildItem(
         "MSU iPhone & MacBook Pro",
-        "Digital Media Marketing",
         "MSU",
         "/PORTFOLIO/DIGITAL MEDIA MARKETING/MSU/Free_iPhone_&_MacBook_Pro_PSD_Mockup_2.jpg"
       ),
       buildItem(
         "MSU Industrial MacBook Air",
-        "Digital Media Marketing",
         "MSU",
         "/PORTFOLIO/DIGITAL MEDIA MARKETING/MSU/Industrial MacBook Air Mockup.jpg"
       ),
 
-      // LOGOS → CITY SPACE BRAND (7 files)
+      // City Space
       buildItem(
         "City Space Logo 1",
-        "Logos",
-        "CITY SPACE BRAND",
+        "City Space",
         "/PORTFOLIO/LOGOS/CITY SPACE BRAND/THE CITY SPACE LOGO.jpg"
       ),
       buildItem(
         "City Space Logo 2",
-        "Logos",
-        "CITY SPACE BRAND",
+        "City Space",
         "/PORTFOLIO/LOGOS/CITY SPACE BRAND/THE CITY SPACE LOGO2.jpg"
       ),
       buildItem(
         "City Space Logo 3",
-        "Logos",
-        "CITY SPACE BRAND",
+        "City Space",
         "/PORTFOLIO/LOGOS/CITY SPACE BRAND/THE CITY SPACE LOGO3.jpg"
       ),
       buildItem(
         "City Space Logo 4",
-        "Logos",
-        "CITY SPACE BRAND",
+        "City Space",
         "/PORTFOLIO/LOGOS/CITY SPACE BRAND/THE CITY SPACE LOGO4.jpg"
       ),
       buildItem(
         "City Space Logo 5",
-        "Logos",
-        "CITY SPACE BRAND",
+        "City Space",
         "/PORTFOLIO/LOGOS/CITY SPACE BRAND/THE CITY SPACE LOGO5.jpg"
       ),
       buildItem(
         "City Space Logo 6",
-        "Logos",
-        "CITY SPACE BRAND",
+        "City Space",
         "/PORTFOLIO/LOGOS/CITY SPACE BRAND/THE CITY SPACE LOGO6.jpg"
       ),
       buildItem(
         "City Space Logo 7",
-        "Logos",
-        "CITY SPACE BRAND",
+        "City Space",
         "/PORTFOLIO/LOGOS/CITY SPACE BRAND/THE CITY SPACE LOGO7.jpg"
       ),
 
-      // LOGOS → TUNVIC BRAND (multiple files)
+      // Tunvic
       buildItem(
         "TUNVIC Branding Guide 1",
-        "Logos",
-        "TUNVIC BRAND",
+        "Tunvic",
         "/PORTFOLIO/LOGOS/TUNVIC BRAND/TUNVIC INVESTMENTS BRANDING GUIDE.jpg"
       ),
       buildItem(
         "TUNVIC Branding Guide 2",
-        "Logos",
-        "TUNVIC BRAND",
+        "Tunvic",
         "/PORTFOLIO/LOGOS/TUNVIC BRAND/TUNVIC INVESTMENTS BRANDING GUIDE2.jpg"
       ),
       buildItem(
         "TUNVIC Branding Guide 3",
-        "Logos",
-        "TUNVIC BRAND",
+        "Tunvic",
         "/PORTFOLIO/LOGOS/TUNVIC BRAND/TUNVIC INVESTMENTS BRANDING GUIDE3.jpg"
       ),
       buildItem(
         "TUNVIC Branding Guide 4",
-        "Logos",
-        "TUNVIC BRAND",
+        "Tunvic",
         "/PORTFOLIO/LOGOS/TUNVIC BRAND/TUNVIC INVESTMENTS BRANDING GUIDE4.jpg"
       ),
       buildItem(
         "TUNVIC Branding Guide 5",
-        "Logos",
-        "TUNVIC BRAND",
+        "Tunvic",
         "/PORTFOLIO/LOGOS/TUNVIC BRAND/TUNVIC INVESTMENTS BRANDING GUIDE5.jpg"
       ),
       buildItem(
         "TUNVIC Branding Guide 6",
-        "Logos",
-        "TUNVIC BRAND",
+        "Tunvic",
         "/PORTFOLIO/LOGOS/TUNVIC BRAND/TUNVIC INVESTMENTS BRANDING GUIDE6.jpg"
       ),
       buildItem(
         "TUNVIC Branding Guide 7",
-        "Logos",
-        "TUNVIC BRAND",
+        "Tunvic",
         "/PORTFOLIO/LOGOS/TUNVIC BRAND/TUNVIC INVESTMENTS BRANDING GUIDE7.jpg"
       ),
       buildItem(
         "TUNVIC Branding Guide 8",
-        "Logos",
-        "TUNVIC BRAND",
+        "Tunvic",
         "/PORTFOLIO/LOGOS/TUNVIC BRAND/TUNVIC INVESTMENTS BRANDING GUIDE8.jpg"
       ),
       buildItem(
         "TUNVIC Branding Guide 9",
-        "Logos",
-        "TUNVIC BRAND",
+        "Tunvic",
         "/PORTFOLIO/LOGOS/TUNVIC BRAND/TUNVIC INVESTMENTS BRANDING GUIDE9.jpg"
       ),
       buildItem(
         "TUNVIC Branding Guide 10",
-        "Logos",
-        "TUNVIC BRAND",
+        "Tunvic",
         "/PORTFOLIO/LOGOS/TUNVIC BRAND/TUNVIC INVESTMENTS BRANDING GUIDE10.jpg"
       ),
       buildItem(
         "TUNVIC Branding Guide 11",
-        "Logos",
-        "TUNVIC BRAND",
+        "Tunvic",
         "/PORTFOLIO/LOGOS/TUNVIC BRAND/TUNVIC INVESTMENTS BRANDING GUIDE11.jpg"
       ),
       buildItem(
         "TUNVIC Branding Guide 12",
-        "Logos",
-        "TUNVIC BRAND",
+        "Tunvic",
         "/PORTFOLIO/LOGOS/TUNVIC BRAND/TUNVIC INVESTMENTS BRANDING GUIDE12.jpg"
       ),
     ],
@@ -206,37 +183,58 @@ const Portfolio = () => {
 
   const categories: ("All" | PortfolioItem["category"])[] = [
     "All",
-    "Digital Media Marketing",
-    "Logos",
+    "Gweru City Parking",
+    "Hawker Siddeley",
+    "MSU",
+    "City Space",
+    "Tunvic",
   ];
 
   const [category, setCategory] = useState<(typeof categories)[number]>("All");
-  const subcategories = useMemo(() => {
-    const set = new Set<string>();
-    items
-      .filter((i) => (category === "All" ? true : i.category === category))
-      .forEach((i) => set.add(i.subcategory));
-    return ["All", ...Array.from(set).sort()];
-  }, [items, category]);
-  const [subcategory, setSubcategory] = useState<string>("All");
-
-  useEffect(() => {
-    setSubcategory("All");
-  }, [category]);
 
   const filtered = items.filter((i) => {
-    const byCat = category === "All" || i.category === category;
-    const bySub = subcategory === "All" || i.subcategory === subcategory;
-    return byCat && bySub;
+    return category === "All" || i.category === category;
   });
 
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [loadedImages, setLoadedImages] = useState<Set<string>>(new Set());
+  const [imageErrors, setImageErrors] = useState<Set<string>>(new Set());
+
+  const handleImageLoad = (src: string) => {
+    setLoadedImages((prev) => new Set(prev).add(src));
+  };
+
+  const handleImageError = (src: string) => {
+    setImageErrors((prev) => new Set(prev).add(src));
+  };
 
   const openAt = (index: number) => {
     setActiveIndex(index);
     setLightboxOpen(true);
+    // Preload adjacent images for smooth navigation
+    const nextIndex = (index + 1) % filtered.length;
+    const prevIndex = (index - 1 + filtered.length) % filtered.length;
+    [nextIndex, prevIndex].forEach((idx) => {
+      const item = filtered[idx];
+      if (item && !loadedImages.has(item.src)) {
+        const img = new Image();
+        img.src = item.src;
+      }
+    });
   };
+
+  // Preload first few images for faster initial load
+  useEffect(() => {
+    const imagesToPreload = filtered.slice(0, 6);
+    imagesToPreload.forEach((item) => {
+      const img = new Image();
+      img.src = item.src;
+      img.onload = () => handleImageLoad(item.src);
+      img.onerror = () => handleImageError(item.src);
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filtered]);
 
   useEffect(() => {
     if (!lightboxOpen) return;
@@ -262,8 +260,8 @@ const Portfolio = () => {
               Portfolio
             </h1>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Explore selected works across Digital Media Marketing and Logo
-              design.
+              Explore our portfolio of brand identity, digital media marketing,
+              and logo design work.
             </p>
           </div>
 
@@ -282,52 +280,58 @@ const Portfolio = () => {
             </div>
           </div>
 
-          <div className="mb-10 -mx-4 px-4 overflow-x-auto">
-            <div className="flex items-center gap-2 sm:gap-3 w-max">
-              {subcategories.map((s) => (
-                <Button
-                  key={s}
-                  variant={subcategory === s ? "secondary" : "outline"}
-                  onClick={() => setSubcategory(s)}
-                  className="h-9 shrink-0"
-                >
-                  {s}
-                </Button>
-              ))}
-            </div>
-          </div>
-
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
-            {filtered.map((item, idx) => (
-              <Card
-                key={item.id}
-                className="group overflow-hidden border hover:shadow-lg transition-shadow"
-              >
-                <button
-                  onClick={() => openAt(idx)}
-                  className="relative block w-full"
+            {filtered.map((item, idx) => {
+              const isLoaded = loadedImages.has(item.src);
+              const hasError = imageErrors.has(item.src);
+              const isAboveFold = idx < 6; // First 6 images are above the fold
+
+              return (
+                <Card
+                  key={item.id}
+                  className="group overflow-hidden border hover:shadow-lg transition-shadow"
                 >
-                  <div className="aspect-[4/3] w-full overflow-hidden bg-muted">
-                    <img
-                      src={item.src}
-                      alt={item.title}
-                      loading="lazy"
-                      className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                    />
+                  <button
+                    onClick={() => openAt(idx)}
+                    className="relative block w-full"
+                  >
+                    <div className="aspect-[4/3] w-full overflow-hidden bg-muted relative">
+                      {!isLoaded && !hasError && (
+                        <Skeleton className="absolute inset-0 w-full h-full" />
+                      )}
+                      {hasError ? (
+                        <div className="flex items-center justify-center h-full bg-muted text-muted-foreground">
+                          <span className="text-sm">Image not available</span>
+                        </div>
+                      ) : (
+                        <img
+                          src={item.src}
+                          alt={item.title}
+                          loading={isAboveFold ? "eager" : "lazy"}
+                          decoding="async"
+                          fetchPriority={isAboveFold ? "high" : "auto"}
+                          onLoad={() => handleImageLoad(item.src)}
+                          onError={() => handleImageError(item.src)}
+                          className={`h-full w-full object-cover transition-opacity duration-300 group-hover:scale-105 ${
+                            isLoaded ? "opacity-100" : "opacity-0"
+                          }`}
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        />
+                      )}
+                    </div>
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors pointer-events-none" />
+                  </button>
+                  <div className="p-4">
+                    <div className="mb-2 flex flex-wrap gap-2">
+                      <Badge variant="secondary">{item.category}</Badge>
+                    </div>
+                    <h3 className="font-semibold text-primary line-clamp-1">
+                      {item.title}
+                    </h3>
                   </div>
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors" />
-                </button>
-                <div className="p-4">
-                  <div className="mb-2 flex flex-wrap gap-2">
-                    <Badge variant="secondary">{item.category}</Badge>
-                    <Badge variant="outline">{item.subcategory}</Badge>
-                  </div>
-                  <h3 className="font-semibold text-primary line-clamp-1">
-                    {item.title}
-                  </h3>
-                </div>
-              </Card>
-            ))}
+                </Card>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -340,11 +344,26 @@ const Portfolio = () => {
             </DialogTitle>
           </DialogHeader>
           <div className="relative flex items-center justify-center">
-            <img
-              src={filtered[activeIndex]?.src}
-              alt={filtered[activeIndex]?.title}
-              className="max-w-full w-auto h-auto object-contain rounded-md max-h-[calc(100dvh-140px)] sm:max-h-[80vh]"
-            />
+            {filtered[activeIndex] && (
+              <>
+                {!loadedImages.has(filtered[activeIndex].src) && (
+                  <Skeleton className="w-full h-[60vh] sm:h-[70vh]" />
+                )}
+                <img
+                  src={filtered[activeIndex].src}
+                  alt={filtered[activeIndex].title}
+                  onLoad={() => handleImageLoad(filtered[activeIndex].src)}
+                  onError={() => handleImageError(filtered[activeIndex].src)}
+                  className={`max-w-full w-auto h-auto object-contain rounded-md max-h-[calc(100dvh-140px)] sm:max-h-[80vh] transition-opacity duration-300 ${
+                    loadedImages.has(filtered[activeIndex].src)
+                      ? "opacity-100"
+                      : "opacity-0 absolute"
+                  }`}
+                  loading="eager"
+                  decoding="async"
+                />
+              </>
+            )}
             {filtered.length > 1 && (
               <div className="pointer-events-none absolute inset-0 flex items-center justify-between px-2">
                 <Button
