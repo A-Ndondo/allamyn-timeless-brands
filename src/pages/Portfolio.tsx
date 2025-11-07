@@ -57,24 +57,24 @@ const Portfolio = () => {
 
       // Hawker Siddeley
       buildItem(
-        "Hawker Siddeley MacBook Air",
+        "Hawker Siddeley",
         "Hawker Siddeley",
         "/PORTFOLIO/DIGITAL MEDIA MARKETING/HAWKER SIDDELEY/Industrial MacBook Air Mockup.jpg"
       ),
       buildItem(
-        "Hawker Siddeley MacBook Pro",
+        "Hawker Siddeley",
         "Hawker Siddeley",
         "/PORTFOLIO/DIGITAL MEDIA MARKETING/HAWKER SIDDELEY/Macbook Pro Mockup.jpg"
       ),
 
       // MSU
       buildItem(
-        "MSU iPhone & MacBook Pro",
+        "MSU iPhone",
         "MSU",
         "/PORTFOLIO/DIGITAL MEDIA MARKETING/MSU/Free_iPhone_&_MacBook_Pro_PSD_Mockup_2.jpg"
       ),
       buildItem(
-        "MSU Industrial MacBook Air",
+        "MSU Industrial",
         "MSU",
         "/PORTFOLIO/DIGITAL MEDIA MARKETING/MSU/Industrial MacBook Air Mockup.jpg"
       ),
@@ -182,15 +182,17 @@ const Portfolio = () => {
   );
 
   const categories: ("All" | PortfolioItem["category"])[] = [
-    "All",
     "Gweru City Parking",
     "Hawker Siddeley",
     "MSU",
     "City Space",
     "Tunvic",
+    "All",
   ];
 
-  const [category, setCategory] = useState<(typeof categories)[number]>("All");
+  const [category, setCategory] = useState<(typeof categories)[number]>(
+    categories[0]
+  );
 
   const filtered = items.filter((i) => {
     return category === "All" || i.category === category;
